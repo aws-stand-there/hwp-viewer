@@ -25,7 +25,7 @@ function Main() {
     reader.readAsBinaryString(file);
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop: handleOnDrop,
   });
 
@@ -35,14 +35,16 @@ function Main() {
       maxHeight: "calc(100vh - 64px)",
     }}>
       {!loaded && (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "30vh" }}>
-          <div {...getRootProps()}>
-            <input {...getInputProps()} />
+
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100vh - 64px)" }}>
             <Empty description={"HWP 파일을 여기로 드래그하세요."} />
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 }
 
